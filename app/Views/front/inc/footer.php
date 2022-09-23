@@ -192,7 +192,8 @@ function Validate()
         <!-- JavaScript Libraries -->
         <script src="<?php echo base_url() ?>/public/assets/js/jquery-3.4.1.min.js"></script>
         <script src="<?php echo base_url() ?>/public/assets/js/bootstrap.bundle.min.js"></script>
-      
+        <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script> -->
+        
         <!-- Template Javascript -->
         <script src="<?php echo base_url() ?>/public/assets/js/main.js"></script>
 		
