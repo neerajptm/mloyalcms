@@ -6,7 +6,7 @@
                     <div class="col-md-6 wow fadeInUp" data-wow-delay="0.0s" style="text-align: center;">
                         <div class="price-item">
                             <div class="price-header">
-                            <img src="img/logo.png" class="img-fluid">
+                            <img src="<?php  echo base_url() ?>/public/assets/img/logo.png" class="img-fluid">
                                
                             </div>
                            

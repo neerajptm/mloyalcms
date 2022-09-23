@@ -54,7 +54,7 @@ function CheckColors(val){
         <!-- Nav Bar Start -->
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
-                <a href="index.html" class="navbar-brand"><img src="img/logo.png"></a>
+                <a href="index.html" class="navbar-brand"><img src="<?php  echo base_url() ?>/public/assets/img/logo.png"></a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>

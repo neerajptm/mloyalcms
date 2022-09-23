@@ -7,8 +7,8 @@ class Home extends BaseController
     public function index()
     {
         $data = array();
-        return view('front/inc/header',$data);
-        return view('front/homepg',$data);
-        return view('front/inc/footer',$data);
+        echo view('front/inc/header',$data);
+        echo view('front/homepg',$data);
+        echo view('front/inc/footer',$data);
     }
 }

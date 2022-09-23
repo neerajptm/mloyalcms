@@ -5,7 +5,7 @@
                     
                     <div class="col-sm-12 col-md-7  d-md-block">
                         <div class="hero-image">
-                            <img src="img/banner.jpg" alt="Hero Image">
+                            <img src="<?php  echo base_url() ?>/public/assets/img/banner.jpg" alt="Hero Image">
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-5">
@@ -178,7 +178,7 @@
                     <div class="col-md-3 wow fadeInUp" data-wow-delay="0.0s">
                         <div class="price-item">
                             <div class="price-header">
-                            <img src="img/blog-1.jpg" class="img-fluid">
+                            <img src="<?php  echo base_url() ?>/public/assets/img/blog-1.jpg" class="img-fluid">
                                
                             </div>
                             <div class="price-body">
@@ -202,7 +202,7 @@ Don't struggle with a single vision or Bi-Focals. Switch to superior Specsmakers
                     <div class="col-md-3 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="price-item featured-item">
                             <div class="price-header">
-                                <img src="img/blog-2.jpg" class="img-fluid">
+                                <img src="<?php  echo base_url() ?>/public/assets/img/blog-2.jpg" class="img-fluid">
                             </div> <div class="price-body">
                               <div class="price-description">
                                    <h2 class="hed">  FLEX</h2>
@@ -226,7 +226,7 @@ Try our Flex frames made from TR or Toughened Resin. These frames are so light a
                     <div class="col-md-3 wow fadeInUp" data-wow-delay="0.6s">
                         <div class="price-item">
                             <div class="price-header">
-                                <img src="img/blog-3.jpg" class="img-fluid">
+                                <img src="<?php  echo base_url() ?>/public/assets/img/blog-3.jpg" class="img-fluid">
                             </div>
                             <div class="price-body">
                                 <div class="price-description">
@@ -250,7 +250,7 @@ Our Peepstar collection are specially made for kids of all ages. Vibrant and Col
                     <div class="col-md-3 wow fadeInUp" data-wow-delay="0.6s">
                         <div class="price-item">
                             <div class="price-header">
-                                <img src="img/blog-4.jpg" class="img-fluid">
+                                <img src="<?php  echo base_url() ?>/public/assets/img/blog-4.jpg" class="img-fluid">
                             </div>
                             <div class="price-body">
                                 <div class="price-description">
@@ -289,7 +289,7 @@ harmful blue light coming from their laptops and mobile devices <br><br>
                     <div class="col-md-3 wow fadeInUp" data-wow-delay="0.0s" style="text-align: center;">
                         <div class="price-item">
                             <div class="price-header">
-                            <img src="img/1.jpg" class="img-fluid">
+                            <img src="<?php  echo base_url() ?>/public/assets/img/1.jpg" class="img-fluid">
                                
                             </div>
                             <div class="price-body">
@@ -305,7 +305,7 @@ RETURN
                     <div class="col-md-3 wow fadeInUp" data-wow-delay="0.3s" style="text-align: center;">
                         <div class="price-item featured-item">
                             <div class="price-header">
-                                <img src="img/2.jpg" class="img-fluid">
+                                <img src="<?php  echo base_url() ?>/public/assets/img/2.jpg" class="img-fluid">
                             </div>
                              <div class="price-body">
                                 <div class="price-description">
@@ -321,7 +321,7 @@ WARRANTY*
                     <div class="col-md-3 wow fadeInUp" data-wow-delay="0.6s" style="text-align: center;">
                         <div class="price-item">
                             <div class="price-header">
-                                <img src="img/3.jpg" class="img-fluid">
+                                <img src="<?php  echo base_url() ?>/public/assets/img/3.jpg" class="img-fluid">
                             </div>
                               <div class="price-body">
                                 <div class="price-description">
@@ -337,7 +337,7 @@ PRICES
                     <div class="col-md-3 wow fadeInUp" data-wow-delay="0.6s" style="text-align: center;">
                         <div class="price-item">
                             <div class="price-header">
-                                <img src="img/4.jpg" class="img-fluid">
+                                <img src="<?php  echo base_url() ?>/public/assets/img/4.jpg" class="img-fluid">
                             </div>
                              <div class="price-body">
                                 <div class="price-description">
