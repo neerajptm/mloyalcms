@@ -5,7 +5,8 @@
                     
                     <div class="col-sm-12 col-md-7  d-md-block">
                         <div class="hero-image">
-                            <img src="<?php  echo base_url() ?>/public/assets/img/banner.jpg" alt="Hero Image">
+                            <!-- <img src="<?php  //echo base_url() ?>/public/assets/img/banner.jpg" alt="Hero Image"> -->
+                            <?php echo $bannerPost->html; ?>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-5">
@@ -25,16 +26,16 @@
 				  fbq('init', '213739212759478');
                   fbq('track', 'PageView');			  
 				</script>				
-                <p class="ent">REGISTER HERE & GET EXTRA RS.2000 OFF DISCOUNT CODE + FREE GIFT ON ALL PURCHASES.</p>
+                <!-- <p class="ent">REGISTER HERE & GET EXTRA RS.2000 OFF DISCOUNT CODE + FREE GIFT ON ALL PURCHASES.</p>
                 <p>(Valid only at Ballari Store)</p>
-               <!-- <div class="form-group "  style="margin: 24px 0px;">
-                  <!--<input type="text" class="  for" placeholder="Name" name="Name">--
-				  <input type="text" id="txtname" name="txtname" value="" placeholder="Name" class="for">
-                </div>-->
+               
                 <div class="form-group">
-                  <!--<input type="text" class="for" placeholder="Phone Number" name="Email">-->
 				  <input type="tel" name="txtmobile" maxlength="10" onkeypress="return isNumber(event)" data-role="none" class="for" placeholder="Mobile number">
-                </div>
+                </div> -->
+
+                <?php echo $mobile_input_post_d->html; ?>
+
+
               <!--  <div class="form-group">
                   <!--<input type="text" class="for" placeholder="Email ID" name="Email">--
 				  <input type="email"  id="txtemail" name="txtemail" class="for" placeholder="Email ID">
@@ -63,7 +64,7 @@
                  
                  <!--<button type="button" class="butt" data-toggle="modal" data-target=".bs-example-modal-new">Submit</button>-->
 				 <!--<button name="Submit" class="butt" type="submit" id="frmsuggest-submit" onclick="return Validate()" data-toggle="modal" data-target=".bs-example-modal-new">Submit</button>-->
-				 <button name="Submit" class="butt" type="submit" id="frmsuggest-submit" onclick="return Validate()" >Submit</button>
+				 <!-- <button name="Submit" class="butt" type="submit" id="frmsuggest-submit" onclick="return Validate()" >Submit</button> -->
                 
                   </form>
 				  
@@ -135,7 +136,7 @@
 
 
         <!-- About Start -->
-        <div class="about wow fadeInUp" data-wow-delay="0.1s">
+        <!-- <div class="about wow fadeInUp" data-wow-delay="0.1s">
             <div class="container">
                 <div class="row align-items-center">
                    <div class="col-lg-3 col-md-3"></div>
@@ -164,7 +165,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+
+        <?php echo $discount_post->html; ?>
         <!-- About End -->
 
  
@@ -175,10 +178,16 @@
             <div class="container">
                 
                 <div class="row">
-                    <div class="col-md-3 wow fadeInUp" data-wow-delay="0.0s">
+                    <?php  
+
+                    foreach($shopnowData as $shpdata){
+                         echo $shpdata['html'];
+                    }
+                    ?>
+                    <!-- <div class="col-md-3 wow fadeInUp" data-wow-delay="0.0s">
                         <div class="price-item">
                             <div class="price-header">
-                            <img src="<?php  echo base_url() ?>/public/assets/img/blog-1.jpg" class="img-fluid">
+                            <img src="<?php  //echo base_url() ?>/public/assets/img/blog-1.jpg" class="img-fluid">
                                
                             </div>
                             <div class="price-body">
@@ -198,11 +207,11 @@ Don't struggle with a single vision or Bi-Focals. Switch to superior Specsmakers
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 wow fadeInUp" data-wow-delay="0.3s">
+                    </div> -->
+                    <!-- <div class="col-md-3 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="price-item featured-item">
                             <div class="price-header">
-                                <img src="<?php  echo base_url() ?>/public/assets/img/blog-2.jpg" class="img-fluid">
+                                <img src="<?php  //echo base_url() ?>/public/assets/img/blog-2.jpg" class="img-fluid">
                             </div> <div class="price-body">
                               <div class="price-description">
                                    <h2 class="hed">  FLEX</h2>
@@ -222,11 +231,11 @@ Try our Flex frames made from TR or Toughened Resin. These frames are so light a
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 wow fadeInUp" data-wow-delay="0.6s">
+                    </div> -->
+                    <!-- <div class="col-md-3 wow fadeInUp" data-wow-delay="0.6s">
                         <div class="price-item">
                             <div class="price-header">
-                                <img src="<?php  echo base_url() ?>/public/assets/img/blog-3.jpg" class="img-fluid">
+                                <img src="<?php  //echo base_url() ?>/public/assets/img/blog-3.jpg" class="img-fluid">
                             </div>
                             <div class="price-body">
                                 <div class="price-description">
@@ -246,11 +255,11 @@ Our Peepstar collection are specially made for kids of all ages. Vibrant and Col
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 wow fadeInUp" data-wow-delay="0.6s">
+                    </div> -->
+                    <!-- <div class="col-md-3 wow fadeInUp" data-wow-delay="0.6s">
                         <div class="price-item">
                             <div class="price-header">
-                                <img src="<?php  echo base_url() ?>/public/assets/img/blog-4.jpg" class="img-fluid">
+                                <img src="<?php  //echo base_url() ?>/public/assets/img/blog-4.jpg" class="img-fluid">
                             </div>
                             <div class="price-body">
                                 <div class="price-description">
@@ -273,7 +282,7 @@ harmful blue light coming from their laptops and mobile devices <br><br>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

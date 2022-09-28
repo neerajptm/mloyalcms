@@ -39,7 +39,9 @@ class Home extends BaseController
         $dispmsg = $this->request->getGet('msg');  
         $data['dispmsg'] = $dispmsg;
         $data['validation'] = $validation;
-        
+        $dispflashmsg = session('dispflashmsg');
+        $data['dispflashmsg'] = $dispflashmsg;
+
         $data['rtout'] = $this->rtout;        
            
         $session->destroy();
@@ -60,17 +62,25 @@ class Home extends BaseController
 
         $usermodel = new User();
         $udata = $usermodel->get_user_by_uid($uid);
-        print_r($udata);
+        ///print_r($udata);
         if($udata){
-            $uidDb = $udata[0]['uid'];
-            $pwdDb = $udata[0]['pwd'];
-            $active = $udata[0]['active'];
+            $uidDb = $udata[0]->uid;
+            $pwdDb = $udata[0]->pwd;
+            $active = $udata[0]->active;
 
-            if(md5($uid) === $uidDb){
-                $newdata = $udata;
+            if(md5($pwd) === $pwdDb){
+                $newdata = (array)$udata[0];
+                // print_r($newdata);die;
                 $newdata['loggedin'] = 1;
                 $session->set($newdata);
+                return redirect()->to(base_url() . '/');
+            }else {
+                $session->setFlashdata('dispflashmsg','Invalid credential');
+                return redirect()->to(base_url() . '/login');
             }
+        }else {
+            $session->setFlashdata('dispflashmsg','Invalid credential');
+            return redirect()->to(base_url() . '/login');
         }
     }
 }
