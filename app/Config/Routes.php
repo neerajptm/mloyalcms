@@ -42,7 +42,7 @@ $routes->get('/', 'Lbackend::allCampaigns');
 $routes->get('newcampaign', 'Lbackend::addCampaigns');
 $routes->get('editcampaign/(:any)', 'Lbackend::editCampaigns/$1');
 $routes->get('newpost', 'Lbackend::createNewPost');
-$routes->get('brand/(:any)', 'Lbackend::hometemplate/$1');
+$routes->get('brand/(:any)/(:any)', 'Lbackend::hometemplate/$1/$2');
 $routes->get('posts', 'Lbackend::allPosts');
 $routes->get('editpost/(:any)', 'Lbackend::updtPosts/$1');
 $routes->get('logout', 'Lbackend::Logout');

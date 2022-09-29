@@ -68,8 +68,59 @@ class Lbackend extends BaseController
     public function lBacendfrmsave(){
         $session = session();
         $loggedin = session('loggedin');
+        $validation =  \Config\Services::validation();
         if(!$loggedin){
             return redirect()->to(base_url() . '/login');
+        }
+
+        $dispmsg = $this->request->getGet('msg');  
+        $data['dispmsg'] = $dispmsg;
+        $data['validation'] = $validation;
+        $dispflashmsg = session('dispflashmsg');
+        $data['dispflashmsg'] = $dispflashmsg;
+
+        $inputs = $this->validate([
+            'campid' => 'required',
+            'selpostbanner' => 'required',
+            'selpostmobinp' => 'required',
+            'selpostdisbanner' => 'required',
+            'selpostshopnow' => 'required',
+            // 'pid' => 'required',
+            
+        ]);
+
+        if (!$inputs) {
+            echo view('front/inc/header',$data);
+            echo  view('front/newpostc',$data);
+            echo view('front/inc/footer',$data);
+        }else {
+            $lbkndmodel = new Lbackend_model();
+            $campid = $this->request->getPost('campid');
+            $selpostbanner = $this->request->getPost('selpostbanner');
+            $selpostmobinp = $this->request->getPost('selpostmobinp');
+            $selpostdisbanner = $this->request->getPost('selpostdisbanner');
+            $selpostshopnow = $this->request->getPost('selpostshopnow');
+            // print_r($selpostshopnow);die;
+            // $pid = $this->request->getPost('pid');
+            // $pid = base64_decode($pid);
+            $uid = session('uid');
+            $insData = array();
+            $insData['campaign_id'] = $campid;
+            $insData['uid'] = $uid;
+            $insData['banner_post_id'] = $selpostbanner;
+            $insData['mobile_input_post_id'] = $selpostmobinp;
+            $insData['discount_post_id'] = $selpostdisbanner;
+            $insData['shop_now_post_id'] = implode('|',$selpostshopnow);
+            $insData['created'] = date("Y-m-d H:i:s");
+            $insData['updated'] = date("Y-m-d H:i:s");
+            $isiupdated =  $lbkndmodel->AddCampaignData($insData);
+            if($isiupdated){
+                $session->setFlashdata('dispflashmsg','Campaign Template Created Successfully');
+                return redirect()->to(base_url() . '/');
+            }else {
+                $session->setFlashdata('dispflashmsg','Unable to Create Campaign template');
+                return redirect()->to(base_url() . '/');
+            }
         }
     }
 
@@ -203,10 +254,10 @@ class Lbackend extends BaseController
         
     }
 
-    public function hometemplate($uid){
+    public function hometemplate($uid, $cmpid){
         $data = array();
         $lbkndmodel = new Lbackend_model();
-        $fromData = $lbkndmodel->getData($uid);
+        $fromData = $lbkndmodel->getData($uid,$cmpid);
         // print_r($fromData);die;
 
         if($fromData){

@@ -57,7 +57,7 @@
                                         <div class="form-group mb-3">
 											<label>Select post for Coupon Info</label>
 											<select id="selpostdisbanner" name="selpostdisbanner" class="form-control login_input br-14">
-                                                <option value="">Select post for Discount Banner</option>
+                                                <option value="">Select post for Coupon Info</option>
                                                 <?php 
                                                     foreach($allPosts as $pst){ ?>
                                                         <option value="<?php echo $pst->id ?>"><?php echo $pst->post_name ?></option>
@@ -69,7 +69,7 @@
 										</div> 
                                         <div class="form-group mb-3">
 											<label>Select post for Shop Now Section</label>
-											<select id="selpostshopnow" multiple name="selpostshopnow" class="form-control login_input br-14">
+											<select id="selpostshopnow" multiple name="selpostshopnow[]" class="form-control login_input br-14">
                                                 <option value="">Select post for  Shop Now Section</option>
                                                 <?php 
                                                     foreach($allPosts as $pst){ ?>

@@ -12,6 +12,12 @@ Class Lbackend_model extends Model{
 
     }
 
+    public function AddCampaignData($data = array())
+	{
+		$this->db->table($this->table)->insert($data);
+        return $this->db->insertID();
+	}
+
     public function getData($uid,$cmpid = null)
     {
         if($cmpid){

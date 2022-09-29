@@ -24,6 +24,7 @@
                                         <td>Created</td>
                                         <td>uid</td>
                                         <td>Action</td>
+                                        <td>Shop Url</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -35,6 +36,8 @@
                                             <td> <?php echo $post->uid;  ?> </td>
                                             <td> <?php echo $post->created;  ?> </td>
                                             <td>  <a href="<?php echo base_url() ?>/editcampaign/<?php echo base64_encode( $post->id); ?>"> Edit </td>
+                                            <td><a class="nav-link" href="<?php echo base_url() ?>/brand/<?php echo session('uid'); ?>/<?php echo $post->id; ?>" target="_blank">Go To
+												Shop</a></td>
                                     </tr>
                                     <?php 
                                     }?>

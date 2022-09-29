@@ -62,8 +62,7 @@
 										</li>
 										<li class="nav-item "><a class="nav-link" href="<?php echo base_url() ?>/logout">Log Out</a></li>
 										
-										<li class="nav-item"><a class="nav-link" href="<?php echo base_url() ?>/brand/<?php echo session('uid'); ?>" target="_blank">Go To
-												Shop</a></li>
+										
 										<li> <h4 class="text-center text-light"> <?php echo session('uid'); ?> </h4> </li>
 										<?php  
 									} ?>
