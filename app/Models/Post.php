@@ -32,12 +32,16 @@ Class Post extends Model{
 
     public function getPostByUid($uid)
     {
-
-		$query = $this->db->query('select * from '.$this->table.' where uid="'.$uid.'" order by id desc');
-        
-        return $query->getResult();
-        
-        
+		$query = $this->db->query('select * from '.$this->table.' where uid="'.$uid.'" order by id desc');        
+        return $query->getResult();                
     }
+
+    public function UpdtPostData($insData, $pid, $uid)
+	{
+		$this->db->table($this->table)->update($insData, array(
+            "id" => $pid,'uid'=>$uid
+        ));
+        return $this->db->affectedRows();
+	}
 
 }

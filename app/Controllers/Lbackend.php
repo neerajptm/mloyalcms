@@ -132,10 +132,10 @@ class Lbackend extends BaseController
             $isinserted =  $postmodel->AddPost($insData);
             if($isinserted){
                 $session->setFlashdata('dispflashmsg','Post Created Successfully');
-                return redirect()->to(base_url() . '/');
+                return redirect()->to(base_url() . '/posts');
             }else {
                 $session->setFlashdata('dispflashmsg','Unable to create new post');
-                return redirect()->to(base_url() . '/');
+                return redirect()->to(base_url() . '/posts');
             }
         }
 
@@ -252,5 +252,121 @@ class Lbackend extends BaseController
         
 
         
+    }
+
+    public function allPosts(){
+        $session = session();
+        $loggedin = session('loggedin');
+        $validation =  \Config\Services::validation();
+        $data = array();
+        if(!$loggedin){
+            return redirect()->to(base_url() . '/login');
+        }
+        $dispmsg = $this->request->getGet('msg');  
+        $data['dispmsg'] = $dispmsg;
+        $data['validation'] = $validation;
+        $dispflashmsg = session('dispflashmsg');
+        $data['dispflashmsg'] = $dispflashmsg;
+
+        $uid = session('uid');
+        
+        $postmodel = new Post();
+        
+        $data['rtout'] = $this->rtout;   
+
+        $allPosts = $postmodel->getPostByUid($uid);
+        $data['allPosts'] = $allPosts;
+
+        $data['title'] = "Backend Dashboard All Posts";
+        echo view('front/inc/header',$data);
+        echo view('front/allposts',$data);        
+        echo view('front/inc/footer',$data);
+    }
+
+    public function updtPosts($postid){
+        $session = session();
+        $loggedin = session('loggedin');
+        $validation =  \Config\Services::validation();
+        if(!$loggedin){
+            return redirect()->to(base_url() . '/login');
+        }
+        $postmodel = new Post();
+        $pid = base64_decode($postid);
+        $postData = $postmodel->getPostById($pid);
+
+        if($postData){
+            $dispmsg = $this->request->getGet('msg');  
+            $data['dispmsg'] = $dispmsg;
+            $data['validation'] = $validation;
+            $dispflashmsg = session('dispflashmsg');
+            $data['dispflashmsg'] = $dispflashmsg;
+
+            $data['rtout'] = $this->rtout;   
+            $data['postData'] = $postData;   
+
+            $data['title'] = "Backend Dashboard";
+            echo view('front/inc/header',$data);
+            echo view('front/editpost.php',$data);
+            echo view('front/inc/footer',$data);
+        }else {
+            $session->setFlashdata('dispflashmsg','Post not found');
+            return redirect()->to(base_url() . '/posts');
+        }
+
+        
+    }
+
+    public function updatePost(){
+        $session = session();
+        $loggedin = session('loggedin');
+        $validation =  \Config\Services::validation();
+        if(!$loggedin){
+            return redirect()->to(base_url() . '/login');
+        }
+
+        $dispmsg = $this->request->getGet('msg');  
+        $data['dispmsg'] = $dispmsg;
+        $data['validation'] = $validation;
+        $dispflashmsg = session('dispflashmsg');
+        $data['dispflashmsg'] = $dispflashmsg;
+
+        $inputs = $this->validate([
+            'postname' => 'required',
+            'editor' => 'required',
+            'pid' => 'required'            
+        ]);
+
+        if (!$inputs) {
+            echo view('front/inc/header',$data);
+            echo  view('front/newpostc',$data);
+            echo view('front/inc/footer',$data);
+        }else {
+            $postmodel = new Post();
+            $postname = $this->request->getPost('postname');
+            $editor = $this->request->getPost('editor');
+            $pid = $this->request->getPost('pid');
+            $pid = base64_decode($pid);
+            $uid = session('uid');
+            $insData = array();
+            $insData['post_name'] = $postname;
+            $insData['html'] = $editor;
+            $insData['updated'] = date("Y-m-d H:i:s");
+            $isiupdated =  $postmodel->UpdtPostData($insData, $pid, $uid);
+            if($isiupdated){
+                $session->setFlashdata('dispflashmsg','Updated Successfully');
+                return redirect()->to(base_url() . '/posts');
+            }else {
+                $session->setFlashdata('dispflashmsg','Unable to Update data');
+                return redirect()->to(base_url() . '/posts');
+            }
+        }
+
+    }
+
+    public function Logout(){
+        $session = session();
+        $session->destroy();
+        $session->setFlashdata('dispflashmsg','Logged out');
+        return redirect()->to(base_url() . '/login');
     }
 }

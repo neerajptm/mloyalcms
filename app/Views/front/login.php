@@ -9,14 +9,16 @@
 							<div class="col-md-6 col-lg-6 col-12 bg-white d-flex align-items-center justify-content-center ">
 								<div class="bg-white p-3 p-lg-5 w-100">
 									<form action="<?php echo base_url()  ?>/validate" method="post" name="mloyalcmslogin" onsubmit="return mlcmsvalidate()">
+										
 										<?php 
-										 echo $validation->listErrors();
-										 if($dispflashmsg){ 
+										echo $validation->listErrors();
+					
+										if($dispflashmsg){ 
 											echo '<p class="text-center text-danger">'.$dispflashmsg.'</p>';
-										 } 
+										} 
 										if($dispmsg){ 
 											echo '<p class="text-center text-danger">'.$dispmsg.'</p>';
-										 } ?>
+										} ?>
 										<h3 class="font-weight-bold mb-3">Login</h3>
 										<div class="form-group mb-3">
 											<label>Username</label>
@@ -25,7 +27,8 @@
 											<div class="clearfix"></div>
 										</div> 
 										<div id="pwd">
-                                            <input class="form-control login_input br-14" name="pwd"  type="password">
+											<label>Password</label>
+                                            <input class="form-control login_input br-14" name="pwd" placeholder="Password"  type="password">
                                             <span class="error" id="pwd_error"></span>
 										</div>    
 										<?= csrf_field() ?>

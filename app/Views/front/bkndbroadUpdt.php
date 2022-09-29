@@ -2,7 +2,7 @@
 		<div class="p-sm-3 p-md-5 px-0 py-2">
 			<div class="d-flex align-items-center justify-content-center">
 				<div class="container">
-				<h4><a href="<?php echo base_url() ?>/brand/<?php echo session('uid'); ?>" target="_blank">Go To Shop</a></h4>    
+				
 					<div class=" d-flex justify-content-center w-100">
 						
 						<div class="col-lg-12 col-md-12 col-12">
@@ -23,7 +23,7 @@
 											echo '<p class="text-center text-danger">'.$dispmsg.'</p>';
 										 } ?>
 										<h3 class="font-weight-bold mb-3">Customize template</h3>
-                                        <h5><a href="<?php echo base_url() ?>/newpost">Create new Post</a></h5>
+                                        
 										<div class="form-group mb-3">
 											<label>Campaign Id</label>
 											<input type="text" id="campid" name="campid" placeholder="Campaign Id" value="<?php echo $frmd->campaign_id; ?>"  onkeydown="return alphanumOnly(event);" class="form-control login_input br-14">

@@ -40,11 +40,15 @@ $routes->get('login', 'Home::login');
 $routes->get('/', 'Lbackend::index');
 $routes->get('newpost', 'Lbackend::createNewPost');
 $routes->get('brand/(:any)', 'Lbackend::hometemplate/$1');
+$routes->get('posts', 'Lbackend::allPosts');
+$routes->get('editpost/(:any)', 'Lbackend::updtPosts/$1');
+$routes->get('logout', 'Lbackend::Logout');
 
 $routes->post('validate', 'Home::validate_login');
 $routes->post('bkendsave', 'Lbackend::lBacendfrmsave');
 $routes->post('savepost', 'Lbackend::savenPost');
 $routes->post('bkendupdt', 'Lbackend::bkendUpdt');
+$routes->post('updtpost', 'Lbackend::updatePost');
 
 /*
  * --------------------------------------------------------------------

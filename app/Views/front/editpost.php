@@ -10,7 +10,7 @@
 							<div class="col-md-8 col-lg-8 col-12 bg-white d-flex align-items-center justify-content-center ">
                                 
 								<div class="bg-white p-3 p-lg-5 w-100">
-									<form action="<?php echo base_url()  ?>/savepost" method="post" name="mloyalcmslogin" onsubmit="return mlcmsvalidate()">
+									<form action="<?php echo base_url()  ?>/updtpost" method="post" name="mloyalcmslogin" onsubmit="return mlcmsvalidate()">
 										<?php 
 										 echo $validation->listErrors();
 
@@ -21,17 +21,17 @@
 										if($dispmsg){ 
 											echo '<p class="text-center text-danger">'.$dispmsg.'</p>';
 										 } ?>
-										<h3 class="font-weight-bold mb-3">Add New Post</h3>
+										<h3 class="font-weight-bold mb-3">Edit Post</h3>
                                        
 										<div class="form-group mb-3">
 											<label>Post Name</label>
-											<input type="text" id="postname" name="postname" placeholder="Post Name"  onkeydown="return alphanumOnly(event);" class="form-control login_input br-14">
+											<input type="text" id="postname" name="postname" value="<?php echo $postData->post_name; ?>" placeholder="Post Name"  onkeydown="return alphanumOnly(event);" class="form-control login_input br-14">
                                             <span class="error" id="postname_error"></span>
 											<div class="clearfix"></div>
 										</div> 
 										<div class="form-group mb-3">
 											<label>Content</label>
-											<textarea name="editor" id="editorck" rows="10" cols="80"></textarea>
+											<textarea name="editor" id="editorck" rows="10" cols="200"><?php echo $postData->html; ?></textarea>
                                             <span class="error" id="editor_error"></span>
 											<div class="clearfix"></div>
 										</div>  
@@ -46,9 +46,10 @@
                                                 </div>
                                             </div>
                                         </div> -->
+                                        <input type="hidden" name="pid" value="<?php echo base64_encode($postData->id); ?>"/>
                                           
 										<?= csrf_field() ?>
-										<button class="btn btn_primary login_btn br-14 w-100" type="submit" id="Submit" ><span class="btn__text-center">Submit</span></button>    
+										<button class="btn btn_primary login_btn br-14 w-100" type="submit" id="Submit" ><span class="btn__text-center">Update</span></button>    
 										
 									
 									</div>
