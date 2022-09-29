@@ -13,8 +13,6 @@
 									<form action="<?php echo base_url()  ?>/savepost" method="post" name="mloyalcmslogin" onsubmit="return mlcmsvalidate()">
 										<?php 
 										 echo $validation->listErrors();
-
-                                         echo $validation->listErrors();
 										 if($dispflashmsg){ 
 											echo '<p class="text-center text-danger">'.$dispflashmsg.'</p>';
 										 } 

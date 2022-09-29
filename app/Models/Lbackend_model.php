@@ -12,9 +12,14 @@ Class Lbackend_model extends Model{
 
     }
 
-    public function getData($uid)
+    public function getData($uid,$cmpid = null)
     {
-		$query = $this->db->query('select * from '.$this->table.' where uid="'.$uid.'" order by id desc');
+        if($cmpid){
+            $query = $this->db->query('select * from '.$this->table.' where uid="'.$uid.'" and id = "'.$cmpid.'" order by id desc');
+        }else {
+            $query = $this->db->query('select * from '.$this->table.' where uid="'.$uid.'" order by id desc');
+        }
+		// echo $this->db->getLastQuery();die;
         return $query->getResult();
     }
 

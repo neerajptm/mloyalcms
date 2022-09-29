@@ -37,12 +37,17 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 //$routes->get('/', 'Home::index');
 $routes->get('login', 'Home::login');
-$routes->get('/', 'Lbackend::index');
+// $routes->get('/', 'Lbackend::index');
+$routes->get('/', 'Lbackend::allCampaigns');
+$routes->get('newcampaign', 'Lbackend::addCampaigns');
+$routes->get('editcampaign/(:any)', 'Lbackend::editCampaigns/$1');
 $routes->get('newpost', 'Lbackend::createNewPost');
 $routes->get('brand/(:any)', 'Lbackend::hometemplate/$1');
 $routes->get('posts', 'Lbackend::allPosts');
 $routes->get('editpost/(:any)', 'Lbackend::updtPosts/$1');
 $routes->get('logout', 'Lbackend::Logout');
+$routes->post('editorupload', 'Lbackend::editorUpload');
+
 
 $routes->post('validate', 'Home::validate_login');
 $routes->post('bkendsave', 'Lbackend::lBacendfrmsave');

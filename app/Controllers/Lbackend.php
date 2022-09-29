@@ -369,4 +369,133 @@ class Lbackend extends BaseController
         $session->setFlashdata('dispflashmsg','Logged out');
         return redirect()->to(base_url() . '/login');
     }
+
+    public function allCampaigns(){
+        $session = session();
+        $loggedin = session('loggedin');
+        $validation =  \Config\Services::validation();
+        $data = array();
+        if(!$loggedin){
+            return redirect()->to(base_url() . '/login');
+        }
+        $dispmsg = $this->request->getGet('msg');  
+        $data['dispmsg'] = $dispmsg;
+        $data['validation'] = $validation;
+        $dispflashmsg = session('dispflashmsg');
+        $data['dispflashmsg'] = $dispflashmsg;
+
+        $uid = session('uid');
+
+        $uid = session('uid');
+        $lbkndmodel = new Lbackend_model();
+       
+        $frmd = array();
+        $allCmpData = $lbkndmodel->getData($uid);
+        $data['allCmpData'] = $allCmpData;
+        $data['rtout'] = $this->rtout;   
+
+        $data['title'] = "Backend Dashboard All Posts";
+        echo view('front/inc/header',$data);
+        echo view('front/allCampaigns',$data);        
+        echo view('front/inc/footer',$data);
+    }
+
+    public function addCampaigns(){
+        $session = session();
+        $loggedin = session('loggedin');
+        $validation =  \Config\Services::validation();
+        $data = array();
+        if(!$loggedin){
+            return redirect()->to(base_url() . '/login');
+        }
+        $dispmsg = $this->request->getGet('msg');  
+        $data['dispmsg'] = $dispmsg;
+        $data['validation'] = $validation;
+        $dispflashmsg = session('dispflashmsg');
+        $data['dispflashmsg'] = $dispflashmsg;
+
+        $uid = session('uid');
+        $lbkndmodel = new Lbackend_model();
+        $postmodel = new Post();
+        // $frmd = array();
+        // $fromData = $lbkndmodel->getData($uid);
+        // if($fromData){
+        //     $frmd = $fromData[0];
+        // }
+        
+        // $data['frmd'] = $frmd;
+
+        $data['rtout'] = $this->rtout;   
+
+        $allPosts = $postmodel->getPostByUid($uid);
+        $data['allPosts'] = $allPosts;
+
+        $data['title'] = "Backend Dashboard";
+        echo view('front/inc/header',$data);
+        echo view('front/bkndbroad',$data);
+        echo view('front/inc/footer',$data);
+    }
+
+    public function editCampaigns($cmpid){
+        $session = session();
+        $loggedin = session('loggedin');
+        $cpid = base64_decode($cmpid);
+        $validation =  \Config\Services::validation();
+        $data = array();
+        if(!$loggedin){
+            return redirect()->to(base_url() . '/login');
+        }
+        $dispmsg = $this->request->getGet('msg');  
+        $data['dispmsg'] = $dispmsg;
+        $data['validation'] = $validation;
+        $dispflashmsg = session('dispflashmsg');
+        $data['dispflashmsg'] = $dispflashmsg;
+
+        $uid = session('uid');
+        $lbkndmodel = new Lbackend_model();
+        $postmodel = new Post();
+        $frmd = array();
+        $fromData = $lbkndmodel->getData($uid,$cpid);
+        if($fromData){
+            $frmd = $fromData[0];
+        }
+        
+        $data['frmd'] = $frmd;
+
+        $data['rtout'] = $this->rtout;   
+
+        $allPosts = $postmodel->getPostByUid($uid);
+        $data['allPosts'] = $allPosts;
+
+        $data['title'] = "Backend Dashboard";
+        echo view('front/inc/header',$data);        
+        echo view('front/bkndbroadUpdt',$data);       
+        echo view('front/inc/footer',$data);
+    }
+
+    public function editorUpload(){
+        $uid = session('uid');
+        if(isset($_FILES['upload']['name'])){
+            $file = $_FILES['upload']['tmp_name'];
+            $file_name = $_FILES['upload']['name'];
+            $file_name_array = explode(".", $file_name);
+            $extension = end($file_name_array);
+            $new_image_name = rand() . '.' . $extension;
+            // chmod('upload', 0777);
+            $allowed_extension = array("jpg", "gif", "png");
+            if(in_array($extension, $allowed_extension))
+            {
+                $imgUp = WRITEPATH . '/../public/uploads/'.$uid;
+                if (!file_exists($imgUp)) {
+                    mkdir($imgUp, 0777, true);
+                }
+                move_uploaded_file($file, $imgUp .'/' . $new_image_name);
+                $function_number = $_GET['CKEditorFuncNum'];
+                // $url = 'upload/' . $new_image_name;
+                $url = base_url(). '/public/uploads/'. $uid .'/' . $new_image_name;
+                $message = '';
+                echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($function_number, '$url', '$message');</script>";
+            }
+        }
+    }
 }

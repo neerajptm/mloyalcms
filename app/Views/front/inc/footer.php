@@ -7,10 +7,10 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
 <script src="<?php echo base_url(); ?>/ckeditor/ckeditor.js"></script>
-<script src="<?php echo base_url(); ?>/ckeditor/samples/js/sample.js"></script>
+<!-- <script src="<?php //echo base_url(); ?>/ckeditor/samples/js/sample.js"></script> -->
 <script src="<?php echo base_url(); ?>/public/assets/js/custom.js"></script>
 <script>
-	initSample();
+	// initSample();
 
 
 
@@ -66,6 +66,13 @@ $(document).ready(function() {
 		
 		table.buttons().container().appendTo(".download_file_btns");
 	}
+
+
+	CKEDITOR.replace('editorck', {
+        filebrowserUploadUrl: '<?php echo base_url() ?>/editorupload',
+		//  filebrowserUploadUrl: "<?php //echo base_url() ?>/upload.php",
+        filebrowserUploadMethod: 'form'
+    });
 </script>
 
 </body>

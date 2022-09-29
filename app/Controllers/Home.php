@@ -83,4 +83,6 @@ class Home extends BaseController
             return redirect()->to(base_url() . '/login');
         }
     }
+
+    
 }

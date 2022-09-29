@@ -44,23 +44,27 @@
 				<div class="row w-100">
 					<div class="d-flex align-items-center justify-content-between w-100">
 						<div class="d-flex align-items-center justify-content-start">
-							<h4 class="text-center text-light">Paytm mLoyal CMS </h4>
+							<button class="navbar-toggler navbar_toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	                            <img src="<?php echo base_url() ?>/public/assets/img/menu_icon.png" class="img-fluid" alt="">
+	                        </button>
+							<h4 class="text-center text-light">Paytm mLoyal Campaign CMS </h4>
 						</div>
 						<div>
 							<div class="top_navs">
 								<div class="collapse navbar-collapse" id="navbarNav">
 									<ul class="navbar-nav nav main_navs">
-										<li class="nav-item active"><a class="nav-link" href="<?php echo base_url() ?>">Home</a></li>
+										<li class="nav-item active"><a class="nav-link" href="<?php echo base_url() ?>">All Campaigns</a></li>
 										<?php 
 									if(session('loggedin')){ ?>
 										
 										<li class="nav-item ">
-											<a class="nav-link " href="<?php echo base_url() ?>/posts">All Posts</a>
-											
+											<a class="nav-link " href="<?php echo base_url() ?>/posts">All Posts</a>											
 										</li>
 										<li class="nav-item "><a class="nav-link" href="<?php echo base_url() ?>/logout">Log Out</a></li>
+										
 										<li class="nav-item"><a class="nav-link" href="<?php echo base_url() ?>/brand/<?php echo session('uid'); ?>" target="_blank">Go To
 												Shop</a></li>
+										<li> <h4 class="text-center text-light"> <?php echo session('uid'); ?> </h4> </li>
 										<?php  
 									} ?>
 									

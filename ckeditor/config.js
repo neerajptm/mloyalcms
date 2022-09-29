@@ -37,6 +37,11 @@ CKEDITOR.editorConfig = function( config ) {
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 
 	config.allowedContent = true;
+	
 };
 
+// CKEDITOR.replace( 'editor', {
+// 	filebrowserBrowseUrl: 'ckfinder/ckfinder.html',
+// 	filebrowserUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
+// } );
 

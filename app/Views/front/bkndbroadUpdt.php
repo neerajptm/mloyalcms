@@ -31,9 +31,9 @@
 											<div class="clearfix"></div>
 										</div> 
 										<div class="form-group mb-3">
-											<label>Select post for Banner</label>
+											<label>Select post for Header Banner</label>
 											<select id="selpostbanner" required name="selpostbanner" class="form-control login_input br-14">
-                                                <option value="">Select post for Banner</option>
+                                                <option value="">Select post for Header Banner</option>
                                                 <?php 
                                                     foreach($allPosts as $pst){ 
 														$sel = '';
@@ -50,9 +50,9 @@
 											<div class="clearfix"></div>
 										</div>  
                                         <div class="form-group mb-3">
-											<label>Select post for Mobile Input</label>
+											<label>Select post for Registration Info</label>
 											<select id="selpostmobinp" name="selpostmobinp" class="form-control login_input br-14">
-                                                <option value="">Select post for Mobile Input</option>
+                                                <option value="">Select post for Registration Info</option>
                                                 <?php 
                                                     foreach($allPosts as $pst){ 
 														$sel = '';
@@ -68,9 +68,9 @@
 											<div class="clearfix"></div>
 										</div>  
                                         <div class="form-group mb-3">
-											<label>Select post for Discount Banner</label>
+											<label>Select post for Coupon Infor</label>
 											<select id="selpostdisbanner" name="selpostdisbanner" class="form-control login_input br-14">
-                                                <option value="">Select post for Discount Banner</option>
+                                                <option value="">Select post for Coupon Info</option>
                                                 <?php 
                                                     foreach($allPosts as $pst){ 
 														
