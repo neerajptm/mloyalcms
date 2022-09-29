@@ -23,8 +23,8 @@
 											echo '<p class="text-center text-danger">'.$dispmsg.'</p>';
 										 } ?>
 										<h3 class="font-weight-bold mb-3">Customize template</h3>
-                                        <h5><a href="<?php echo base_url() ?>/newpost">Create new Post</a></h5>
-										<div class="form-group mb-3">
+                                        <h5><a href="<?php echo base_url() ?>/posts">All Posts</a></h5>
+										<div `c`lass="form-group mb-3">
 											<label>Campaign Id</label>
 											<input type="text" id="campid" name="campid" placeholder="Campaign Id"  onkeydown="return alphanumOnly(event);" class="form-control login_input br-14">
                                             <span class="error" id="campid_error"></span>
