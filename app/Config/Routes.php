@@ -46,6 +46,8 @@ $routes->get('brand/(:any)/(:any)', 'Lbackend::hometemplate/$1/$2');
 $routes->get('posts', 'Lbackend::allPosts');
 $routes->get('editpost/(:any)', 'Lbackend::updtPosts/$1');
 $routes->get('logout', 'Lbackend::Logout');
+$routes->get('mqml/(:any)', 'Lbackend::genMqml/$1');
+
 $routes->post('editorupload', 'Lbackend::editorUpload');
 
 

@@ -20,11 +20,12 @@
 								<thead>
 									<tr>
                                         <td>ID</td>                                        
-                                        <td>Campaign Id</td>                                        
-                                        <td>Created</td>
-                                        <td>uid</td>
+                                        <td>Campaign Id</td> 
+                                        <td>uid</td>                                       
+                                        <td>Created</td>                                        
                                         <td>Action</td>
                                         <td>Shop Url</td>
+                                        <td>Short/MQML link</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -37,7 +38,16 @@
                                             <td> <?php echo $post->created;  ?> </td>
                                             <td>  <a href="<?php echo base_url() ?>/editcampaign/<?php echo base64_encode( $post->id); ?>"> Edit </td>
                                             <td><a class="nav-link" href="<?php echo base_url() ?>/brand/<?php echo session('uid'); ?>/<?php echo $post->id; ?>" target="_blank">Go To
-												Shop</a></td>
+												Shop</a>                                                
+                                            </td>
+                                            <td>
+                                            <?php  if(!$post->mqml){ ?>
+                                                    <a class="nav-link" href="<?php echo base_url() ?>/mqml/<?php echo base64_encode($post->id); ?>">Generate mqml link</a>
+                                                 <?php    
+                                                }else {
+                                                    echo $post->mqml;
+                                                } ?>
+                                            </td>
                                     </tr>
                                     <?php 
                                     }?>

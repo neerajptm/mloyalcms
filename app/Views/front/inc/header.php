@@ -53,10 +53,10 @@
 							<div class="top_navs">
 								<div class="collapse navbar-collapse" id="navbarNav">
 									<ul class="navbar-nav nav main_navs">
-										<li class="nav-item active"><a class="nav-link" href="<?php echo base_url() ?>">All Campaigns</a></li>
+										
 										<?php 
 									if(session('loggedin')){ ?>
-										
+										<li class="nav-item active"><a class="nav-link" href="<?php echo base_url() ?>">All Campaigns</a></li>
 										<li class="nav-item ">
 											<a class="nav-link " href="<?php echo base_url() ?>/posts">All Posts</a>											
 										</li>

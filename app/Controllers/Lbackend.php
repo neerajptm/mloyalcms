@@ -549,4 +549,30 @@ class Lbackend extends BaseController
             }
         }
     }
+
+    public function genMqml($cmpid){
+        $session = session();
+        $pid = base64_decode($cmpid);
+        $uid = session('uid');
+        $keyword = mt_rand();
+        $title = $keyword;
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $ur = base_url() . '/brand/'.$uid.'/'.$pid;
+        $url="https://taghash.co/shorten/?keyword=".$keyword."&url=".$ur."&title=".$title."&ip=".$ip;
+        $srturl = file_get_contents($url);
+
+        $lbkndmodel = new Lbackend_model();
+
+        $insData = array();        
+        $insData['mqml'] = $srturl;
+        $insData['updated'] = date("Y-m-d H:i:s");
+        $isiupdated =  $lbkndmodel->UpdtbkndData($insData, $pid, $uid);
+        if($isiupdated){
+            $session->setFlashdata('dispflashmsg','Generated Successfully');
+            return redirect()->to(base_url() . '/');
+        }else {
+            $session->setFlashdata('dispflashmsg','Unable to Generated mqml');
+            return redirect()->to(base_url() . '/');
+        }
+    }
 }
